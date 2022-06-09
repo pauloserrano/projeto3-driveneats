@@ -5,7 +5,7 @@
 body{
     display: flex;
     flex-direction: column;
-    width: 600px;
+    width: 414px;
     margin: 0 auto;
     position: relative;
     background-color: #eee;
@@ -31,19 +31,18 @@ header span{
 }
 
 main{
-    padding: 10px 0 0 20px;
+    padding-left: 20px;
 }
 
 main h2{
     font-size: 26px;
-    margin-bottom: 16px;
+    line-height: 2em;
 }
 
 main .options{
     display: flex;
     overflow-x: scroll;
     scroll-behavior: smooth;
-    background-color: red;
 }
 
 main .options > div{
@@ -56,4 +55,24 @@ main .options > div{
     margin-right: 16px;
     border-radius: 5px;
     background-color: white;
+}
+
+main .btn-submit{
+    width: 100%;
+    position: sticky;
+    bottom: 0;
+    padding: 20px;
+    background-color: white;
+}
+
+main button{
+    width: 100%;
+    padding: .5em 20%;
+    font-size: 22px;
+    text-align: center;
+    background-color: #cbcbcb;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
 }
