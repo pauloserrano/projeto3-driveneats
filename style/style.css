@@ -19,9 +19,11 @@ header{
     top: 0;
     width: 100%;
     padding: 10px 20px;
+    margin-bottom: 16px;
     background-color: #CF2B2B;
     color: white;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    z-index: 1;
 }
 
 header h1{
@@ -45,6 +47,7 @@ main h2{
 
 main .options{
     display: flex;
+    margin-bottom: 16px;
     overflow-x: scroll;
     scroll-behavior: smooth;
 }
@@ -53,6 +56,7 @@ main .options > div{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    position: relative;
     min-height: 200px;
     width: 170px;
     padding: 16px;
@@ -61,6 +65,10 @@ main .options > div{
     background-color: white;
     font-size: 16px;
     box-shadow: 0px 0px 10px -4px rgba(0, 0, 0, 0.25);;
+}
+
+main .options > div.selected{
+    border: 5px solid #32B72F;
 }
 
 main .options > div *:not(:first-child){
@@ -76,6 +84,24 @@ main .options span:first-of-type{
     color: #a6a6a6;
     font-size: 15px;
     font-weight: 300;
+}
+
+main .options .checkmark{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    right: 14px;
+    bottom: 14px;
+    width: 16px;
+    height: 16px;
+    border-radius: 100%;
+    background-color: #32B72F;
+}
+
+main .options .checkmark img{
+    width: 70%;
+    filter: invert(1);
 }
 
 main .btn-submit{
