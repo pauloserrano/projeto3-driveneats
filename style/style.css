@@ -1,0 +1,52 @@
+*{
+    box-sizing: border-box;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    width: 600px;
+    margin: 0 auto;
+    position: relative;
+    background-color: #eee;
+}
+
+header{
+    display: flex;
+    flex-direction: column;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    padding: 10px 20px;
+    background-color: #CF2B2B;
+    color: white;
+}
+
+header h1{
+    font-size: 44px;
+}
+
+header span{
+    font-size: 18px;
+}
+
+main{
+    padding: 10px 0 0 20px;
+}
+
+main h2{
+    font-size: 26px;
+    margin-bottom: 16px;
+}
+
+main .options{
+    background-color: red;
+}
+
+main .options{
+    width: 170px;
+    padding: 16px;
+    border-radius: 5px;
+    background-color: white;
+    scroll-behavior: smooth;
+}
