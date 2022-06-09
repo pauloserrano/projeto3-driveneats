@@ -9,6 +9,7 @@ body{
     margin: 0 auto;
     position: relative;
     background-color: #eee;
+    font-family: 'Roboto', sans-serif;
 }
 
 header{
@@ -24,6 +25,7 @@ header{
 
 header h1{
     font-size: 44px;
+    font-family: "Righteous", cursive;
 }
 
 header span{
@@ -36,6 +38,7 @@ main{
 
 main h2{
     font-size: 26px;
+    font-family: "Righteous", cursive;
     line-height: 2em;
 }
 
@@ -55,6 +58,22 @@ main .options > div{
     margin-right: 16px;
     border-radius: 5px;
     background-color: white;
+    font-size: 16px;
+}
+
+main .options > div *:not(:first-child){
+    margin-top: 12px;
+}
+
+main .options h3{
+    font-size: 16px;
+    font-weight: bold;
+}
+
+main .options span:first-of-type{
+    color: #a6a6a6;
+    font-size: 15px;
+    font-weight: 300;
 }
 
 main .btn-submit{
