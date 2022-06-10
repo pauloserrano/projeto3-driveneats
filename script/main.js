@@ -1,13 +1,15 @@
-const optionItems = document.querySelectorAll('.options')
+const itemContainers = document.querySelectorAll('.options')
 const submitBtn = document.querySelector('.btn-submit')
 let selectedItems = 0
 
+
 const removePreviousItem = (container) => {
     const containerItems = container.querySelectorAll('div')
-    console.log(containerItems)
 
     containerItems.forEach(item => {
-        if (item.classList.contains('selected')){
+        const isSelected = item.classList.contains('selected')
+
+        if (isSelected){
             item.classList.remove('selected')
             selectedItems -= 1
         }
@@ -15,7 +17,7 @@ const removePreviousItem = (container) => {
 
 }
 
-optionItems.forEach(container => {
+itemContainers.forEach(container => {
     const items = container.querySelectorAll('div')
 
     items.forEach(item => {
@@ -27,7 +29,7 @@ optionItems.forEach(container => {
                 item.classList.add('selected')
                 selectedItems += 1
             }
-    
+
             if (selectedItems === 3) {
                 submitBtn.classList.add('ready')
             }
