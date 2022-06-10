@@ -5,7 +5,7 @@
 body{
     display: flex;
     flex-direction: column;
-    width: 414px;
+    max-width: 414px;
     margin: 0 auto;
     position: relative;
     background-color: #eee;
@@ -42,12 +42,12 @@ main{
 main h2{
     font-size: 26px;
     font-family: "Righteous", cursive;
-    line-height: 2em;
+    margin: 1em 0;
 }
 
 main .options{
     display: flex;
-    margin-bottom: 16px;
+    padding-bottom: 16px;
     overflow-x: scroll;
     scroll-behavior: smooth;
     cursor: grab;
@@ -59,7 +59,7 @@ main .options > div{
     justify-content: space-between;
     position: relative;
     min-height: 200px;
-    padding: 16px;
+    padding: 8px;
     margin-right: 16px;
     border-radius: 5px;
     background-color: white;
@@ -118,8 +118,9 @@ main .btn-submit{
     background-color: white;
 }
 
-main button{
+main .btn-submit button{
     width: 100%;
+    min-height: 60px;
     padding: .5em 20%;
     font-size: 22px;
     text-align: center;
@@ -128,4 +129,19 @@ main button{
     border: none;
     border-radius: 50px;
     cursor: pointer;
+}
+
+main .btn-submit.ready button:nth-child(2){
+    background-color: #32B72F;
+}
+
+main .btn-submit.ready button:first-child,
+main .btn-submit button:nth-child(2){
+    display: none;
+}
+
+
+main .btn-submit button:first-child,
+main .btn-submit.ready button:nth-child(2){
+    display: initial;
 }
