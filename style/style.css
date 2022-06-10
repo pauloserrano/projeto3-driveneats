@@ -5,7 +5,7 @@
 body{
     display: flex;
     flex-direction: column;
-    max-width: 414px;
+    max-width: 514px;
     margin: 0 auto;
     position: relative;
     background-color: #eee;
@@ -19,7 +19,7 @@ header{
     top: 0;
     width: 100%;
     padding: 10px 20px;
-    margin-bottom: 16px;
+    margin-bottom: 8px;
     background-color: #CF2B2B;
     color: white;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -59,7 +59,7 @@ main .options > div{
     justify-content: space-between;
     position: relative;
     min-height: 200px;
-    padding: 8px;
+    padding: 16px;
     margin-right: 16px;
     border-radius: 5px;
     background-color: white;
@@ -69,8 +69,12 @@ main .options > div{
 }
 
 main .options > div.selected{
+    padding: 11px;
     border: 5px solid #32B72F;
-    transition: all linear .1s;
+}
+
+main .options > div *{
+    pointer-events: none;
 }
 
 main .options > div *:not(:first-child){
@@ -97,8 +101,8 @@ main .options .selected .checkmark{
     justify-content: center;
     align-items: center;
     position: absolute;
-    right: 14px;
-    bottom: 14px;
+    right: 10px;
+    bottom: 10px;
     width: 16px;
     height: 16px;
     border-radius: 100%;
