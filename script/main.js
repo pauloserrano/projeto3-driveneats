@@ -1,6 +1,6 @@
 const itemContainers = document.querySelectorAll('.options')
 const submitBtn = document.querySelector('.btn-submit')
-let selectedItems = 0
+let selected = 0
 
 
 const removePreviousItem = (container) => {
@@ -11,7 +11,7 @@ const removePreviousItem = (container) => {
 
         if (isSelected){
             item.classList.remove('selected')
-            selectedItems -= 1
+            selected -= 1
         }
     })
 
@@ -27,13 +27,34 @@ itemContainers.forEach(container => {
             if (!isSelected){
                 removePreviousItem(e.target.parentElement)
                 item.classList.add('selected')
-                selectedItems += 1
+                selected += 1
             }
 
-            if (selectedItems === 3) {
+            if (selected === 3) {
                 submitBtn.classList.add('ready')
             }
         })
     })
 })
 
+
+submitBtn.addEventListener('click', () => {
+    if (selected === 3){
+        const selectedItems = document.querySelectorAll('.selected')
+        let orderTotal = 0
+    
+        selectedItems.forEach(item => {
+            const price = Number((item.querySelector('strong').innerHTML).replace(',', '.'))
+            orderTotal += price
+        })
+        
+        let orderTemplate = `Olá, gostaria de fazer o pedido:
+        - Prato: ${selectedItems[0].querySelector('h3').innerHTML}
+        - Bebida: ${selectedItems[1].querySelector('h3').innerHTML}
+        - Sobremesa: ${selectedItems[2].querySelector('h3').innerHTML}
+        Total: R$ ${orderTotal.toFixed(2).toString().replace('.', ',')}`
+    
+        const wppURL = `https://wa.me/5521999124291?text=${orderTemplate}`
+        open(wppURL)
+    }
+})
