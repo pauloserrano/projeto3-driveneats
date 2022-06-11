@@ -1,36 +1,73 @@
+// HTML Elements
 const itemContainers = document.querySelectorAll('.options')
 const submitBtn = document.querySelector('.btn-submit')
+const confirmOverlay = document.querySelector('.confirm-msg.overlay')
+const confirmBtn = confirmOverlay.querySelector('.btn-confirm button:first-child')
+const cancelBtn = confirmOverlay.querySelector('.btn-confirm button:nth-child(2)')
+const order = confirmOverlay.querySelector('.order')
+
+
+// Variables
 let selected = 0
+let wppURL
 
 
-const removePreviousItem = (container) => {
-    const containerItems = container.querySelectorAll('div')
-
-    containerItems.forEach(item => {
-        const isSelected = item.classList.contains('selected')
-
-        if (isSelected){
-            item.classList.remove('selected')
-            selected -= 1
-        }
-    })
-
-}
-
-itemContainers.forEach(container => {
-    const items = container.querySelectorAll('div')
+// Functions
+function getTotal(items) {
+    let total = 0
 
     items.forEach(item => {
-        item.addEventListener('click', (e) => {  
-            const isSelected = item.classList.contains('selected')
+        const price = Number((item.querySelector('strong').innerHTML).replace(',', '.'))
+        total += price
+    })
 
-            if (!isSelected){
-                removePreviousItem(e.target.parentElement)
-                item.classList.add('selected')
+    return total
+}
+
+
+function getMessage(items, customer, deliveryAdress, total) {
+    const message = `Olá, gostaria de fazer o pedido:\n- Prato: ${items[0].querySelector('h3').innerHTML}\n- Bebida: ${items[1].querySelector('h3').innerHTML}\n- Sobremesa: ${items[2].querySelector('h3').innerHTML}\nTotal: R$ ${total.toFixed(2).toString().replace('.', ',')}\n\nNome: ${customer}\nEndereço: ${deliveryAdress}`
+    console.log(message)
+    
+    return encodeURIComponent(message)
+}
+
+function orderSetup(items, customer, deliveryAdress, total){
+    order.innerHTML = ""
+    console.log(items)
+    items.forEach(item => {
+        const itemName = item.querySelector('h3').innerHTML
+        const itemPrice = item.querySelector('strong').innerHTML
+
+        const itemHTML = `
+            <div class="item">
+                <span>${itemName}</span>
+                <span>R$ ${itemPrice}</span>
+            </div>
+        `
+        order.innerHTML += itemHTML
+    })
+}
+
+
+// Events
+itemContainers.forEach(container => {
+    const items = container.querySelectorAll('div')
+    
+    items.forEach(item => {
+        item.addEventListener('click', () => {  
+            const selectedItem = container.querySelector('.selected')
+
+            if (selectedItem != null){
+                selectedItem.classList.remove('selected')
+            
+            } else {
                 selected += 1
             }
 
-            if (selected === 3) {
+            item.classList.add('selected')
+
+            if (selected === itemContainers.length) {
                 submitBtn.classList.add('ready')
             }
         })
@@ -38,23 +75,26 @@ itemContainers.forEach(container => {
 })
 
 
+
 submitBtn.addEventListener('click', () => {
     if (selected === 3){
         const selectedItems = document.querySelectorAll('.selected')
-        let orderTotal = 0
-    
-        selectedItems.forEach(item => {
-            const price = Number((item.querySelector('strong').innerHTML).replace(',', '.'))
-            orderTotal += price
-        })
+        const name = prompt('Qual o seu nome?')
+        const adress = prompt('Qual seu endereço?')
+        const total = getTotal(selectedItems)
+
+        orderSetup(selectedItems, name, adress, total)
+
+        confirmOverlay.classList.add('visible')
         
-        let orderTemplate = `Olá, gostaria de fazer o pedido:
-        - Prato: ${selectedItems[0].querySelector('h3').innerHTML}
-        - Bebida: ${selectedItems[1].querySelector('h3').innerHTML}
-        - Sobremesa: ${selectedItems[2].querySelector('h3').innerHTML}
-        Total: R$ ${orderTotal.toFixed(2).toString().replace('.', ',')}`
-    
-        const wppURL = `https://wa.me/5521999124291?text=${orderTemplate}`
-        open(wppURL)
+        wppURL = `https://wa.me/5521999124291?text=${getMessage(selectedItems, name, adress, total)}`
     }
+})
+
+confirmBtn.addEventListener('click', () => {
+    open(wppURL)
+})
+
+cancelBtn.addEventListener('click', () => {
+    confirmOverlay.classList.remove('visible')
 })

@@ -122,10 +122,10 @@ main .btn-submit{
     background-color: white;
 }
 
-main .btn-submit button{
+main .btn-submit button, .confirm-msg .btn-confirm button{
     width: 100%;
     min-height: 60px;
-    padding: .5em 20%;
+    padding: .5em 10%;
     font-size: 22px;
     text-align: center;
     background-color: #cbcbcb;
@@ -148,4 +148,74 @@ main .btn-submit button:nth-child(2){
 main .btn-submit button:first-child,
 main .btn-submit.ready button:nth-child(2){
     display: initial;
+}
+
+.confirm-msg.overlay{
+    display: none;
+}
+
+.confirm-msg.overlay.visible{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    height: 100vh;
+    width: 514px;
+    background-color: rgba(255, 255, 255, .9);
+    z-index: 2;
+}
+
+.confirm-msg > div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 90%;
+    font-size: 22px;
+    font-weight: bold;
+    padding: 20px;
+    border-radius: 10px;
+    color: white;
+    background-color: #50D074;
+}
+
+.confirm-msg h3, .confirm-msg .order{
+    margin-bottom: 1em;
+}
+
+.confirm-msg .order{
+    width: 100%;
+}
+
+.confirm-msg .order .item{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: .5em;
+}
+
+.confirm-msg .order .item:not(:last-child){
+    font-weight: 400;
+}
+
+.confirm-msg .order .item {
+    margin-bottom: .5em;
+}
+
+.confirm-msg .btn-confirm{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.confirm-msg .btn-confirm button:first-child{
+    color: #50D074;
+    font-weight: bold;
+    background-color: white;
+}
+
+.confirm-msg .btn-confirm button:nth-child(2){
+    font-size: 20px;
+    font-weight: bold;
+    background-color: transparent;
 }
