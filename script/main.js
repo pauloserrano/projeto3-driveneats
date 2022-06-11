@@ -34,7 +34,7 @@ function getMessage(items, customer, deliveryAdress, total) {
 
 function orderSetup(items, customer, deliveryAdress, total){
     order.innerHTML = ""
-    console.log(items)
+
     items.forEach(item => {
         const itemName = item.querySelector('h3').innerHTML
         const itemPrice = item.querySelector('strong').innerHTML
@@ -47,6 +47,13 @@ function orderSetup(items, customer, deliveryAdress, total){
         `
         order.innerHTML += itemHTML
     })
+
+    order.innerHTML += `
+        <div class="item">
+            <span>TOTAL</span>
+            <span>R$ ${total.toFixed(2).toString().replace('.', ',')}</span>
+        </div>
+    `
 }
 
 

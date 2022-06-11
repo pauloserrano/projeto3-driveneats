@@ -58,7 +58,7 @@ main .options > div{
     flex-direction: column;
     justify-content: space-between;
     position: relative;
-    min-height: 200px;
+    min-height: 250px;
     padding: 16px;
     margin-right: 16px;
     border-radius: 5px;
@@ -71,6 +71,11 @@ main .options > div{
 main .options > div.selected{
     padding: 11px;
     border: 5px solid #32B72F;
+}
+
+main .options div > img{
+    width: 150px;
+    height: 90px;
 }
 
 main .options > div *{
@@ -152,6 +157,7 @@ main .btn-submit.ready button:nth-child(2){
 
 .confirm-msg.overlay{
     display: none;
+    transition: .2s ease-out all;
 }
 
 .confirm-msg.overlay.visible{
@@ -191,15 +197,16 @@ main .btn-submit.ready button:nth-child(2){
 .confirm-msg .order .item{
     display: flex;
     justify-content: space-between;
-    margin-bottom: .5em;
+    margin-bottom: .75em;
+}
+
+.confirm-msg .order .item:last-child{
+    border-top: 2px solid white;
+    padding-top: .75em;
 }
 
 .confirm-msg .order .item:not(:last-child){
     font-weight: 400;
-}
-
-.confirm-msg .order .item {
-    margin-bottom: .5em;
 }
 
 .confirm-msg .btn-confirm{
@@ -218,4 +225,10 @@ main .btn-submit.ready button:nth-child(2){
     font-size: 20px;
     font-weight: bold;
     background-color: transparent;
+}
+
+@media (max-width: 514px){
+    .confirm-msg.overlay.visible{
+        width: 100vw;
+    }
 }
