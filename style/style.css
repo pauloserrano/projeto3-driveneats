@@ -119,7 +119,7 @@ main .options .selected .checkmark img{
     filter: invert(1);
 }
 
-main .btn-submit{
+.btn-submit{
     width: 100%;
     position: sticky;
     bottom: 0;
@@ -127,7 +127,7 @@ main .btn-submit{
     background-color: white;
 }
 
-main .btn-submit button, .confirm-msg .btn-confirm button{
+.btn-submit button, .confirm-msg .btn-confirm button{
     width: 100%;
     min-height: 60px;
     padding: .5em 10%;
@@ -140,18 +140,18 @@ main .btn-submit button, .confirm-msg .btn-confirm button{
     cursor: pointer;
 }
 
-main .btn-submit.ready button:nth-child(2){
+.btn-submit.ready button:nth-child(2){
     background-color: #32B72F;
 }
 
-main .btn-submit.ready button:first-child,
-main .btn-submit button:nth-child(2){
+.btn-submit.ready button:first-child,
+.btn-submit button:nth-child(2){
     display: none;
 }
 
 
-main .btn-submit button:first-child,
-main .btn-submit.ready button:nth-child(2){
+.btn-submit button:first-child,
+.btn-submit.ready button:nth-child(2){
     display: initial;
 }
 
